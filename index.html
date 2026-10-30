@@ -970,6 +970,31 @@ body{word-break:keep-all; overflow-wrap:break-word; letter-spacing:-.01em}
   100%{text-shadow:none}
 }
 @media (prefers-reduced-motion:reduce){ .idle .iTitle, .reel.tune .reelHint b{animation:none} }
+
+/* ══ 휴대폰 — 컴퓨터용 2열·부채 배치를 좁은 화면에 맞춘다 ══ */
+@media (max-width:900px){
+  /* 작업 노트: 정보 → 요약 → PROCESS → 이미지 순으로 한 줄 */
+  .note{grid-template-columns:1fr !important}
+  .note .nShots{margin-top:var(--s-20) !important}
+  .nCard, .nWhy, .nHow{max-width:none}
+}
+@media (max-width:600px){
+  /* 메뉴 — 이름과 메뉴가 붙지 않게 */
+  .navR{gap:16px}
+  .nav{font-size:11px}
+  .nav .pill{padding:6px 10px}
+  /* 첫 화면 — 분류 태그는 숨기고, 카드 열 장이 화면 안에 다 들어오게 */
+  .idle .iCats{display:none}
+  .fan{--cw:17vw}
+  .card{margin-inline:calc(var(--cw)*-0.26)}
+  .card .meta .t{display:none}
+  .card .meta .c{display:none}
+  .card .no{top:8px; left:8px; font-size:10px}
+  /* 작업 노트 이미지 — 3열을 2열로, 넓은 창은 두 칸 그대로 */
+  .nShots.g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nShots .pn.wnd .bar span{font-size:11px}
+  .wkHead{padding-top:28vh}
+}
 </style>
 
 <!-- 상단 내비 — 워드마크 왼쪽, 고스트 링크, 아웃라인 CONTACT 가 오른쪽 끝을 잡는다.
@@ -993,9 +1018,9 @@ body{word-break:keep-all; overflow-wrap:break-word; letter-spacing:-.01em}
 <nav class="nav">
   <a class="wm" href="#top">이인호</a>
   <div class="navR">
-    <a href="#works">WORKS</a>
-    <a href="#about">ABOUT</a>
-    <a class="pill" href="#contact">CONTACT</a>
+    <a href="#top">WORKS</a>
+    <a href="#process">PROCESS</a>
+    <a class="pill" href="#about">CONTACT</a>
   </div>
 </nav>
 
@@ -1068,7 +1093,7 @@ body{word-break:keep-all; overflow-wrap:break-word; letter-spacing:-.01em}
 <!-- ①-b 기획 노트 — 전부가 아니라 골라낸 3~4개.
      8개를 좌우로 넘기게 했더니 안 읽힌다. 세로로, 짧게, 캡쳐를 섞어서. -->
 <!-- 영상 바로 아래에서 작업 노트가 시작되면 경계가 안 보인다 — ABOUT 과 같은 머리말로 한 번 끊는다 -->
-<section class="wkHead">
+<section class="wkHead" id="process">
   <p class="kick">SELECTED 04</p>
   <h2 class="lede">Process</h2>
   <p class="wkSub">네 작품을 골라, 기획부터 완성까지의 과정을 정리했습니다.</p>
